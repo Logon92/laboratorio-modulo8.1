@@ -142,3 +142,32 @@ const HayPacientesDePediatria = (pacientes: Pacientes[]): boolean => {
     return mandarACasa;
   };
 console.log(HayPacientesDePediatria(pacientes));
+
+// APARTADO 5 (OPCIONAL): número total de pacientes que están asignados a cada especialidad
+interface NumeroPacientesPorEspecialidad {
+  medicoDeFamilia: number;
+  pediatria: number;
+  cardiologia: number;
+}
+
+const cuentaPacientesPorEspecialidad = (pacientes: Pacientes[]): NumeroPacientesPorEspecialidad => {
+  let totalMdf: number = 0;
+  let totalPed: number = 0;
+  let totalCar: number = 0;
+  for(let i = 0; i < pacientes.length; i++){
+    if(pacientes[i].especialidad === "Medico de familia"){
+      totalMdf++
+    };
+    if(pacientes[i].especialidad === "Pediatra"){
+      totalPed++
+    };
+    if(pacientes[i].especialidad === "Cardiólogo"){
+      totalCar++
+    }
+  }return {
+    medicoDeFamilia: totalMdf,
+    pediatria: totalPed,
+    cardiologia: totalCar
+  }
+};
+console.log(cuentaPacientesPorEspecialidad(pacientes));
